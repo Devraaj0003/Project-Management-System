@@ -37,7 +37,7 @@ router.get('/', function (req, res, next) {
         }
 
         let stage = {};
-        if (marks && marks[0]) {
+        if (marks[0]) {
           stage = {
             stage1: marks[0].file1,
             stage2: marks[0].file2,

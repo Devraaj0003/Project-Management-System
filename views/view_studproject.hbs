@@ -6,32 +6,12 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="/teacher">
-              DashBoard
+              Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/teacher/view_mygroups/{{stage.t_id}}">
               View Groups
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link 3
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link 4
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link 5
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Link 6
             </a>
           </li>
         </ul>
@@ -40,8 +20,9 @@
 
     <!-- Main Content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color: DDE6ED;">
-      <h1 class="text-primary p-4">MY Project {{stage.name}}</h1>
+      <h1 class="text-primary p-4">My Project </h1>
 
+<h3 class=" text-secondary pb-3">Student Name: {{stage.name}}</h3>
       <!-- Your page content goes here -->
       <table class="table table-bordered table-horizontal">
 
@@ -87,9 +68,14 @@
             <td colspan="2" class="text-center" style="padding: 40px;">{{stage.level4}}</td>
             <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac4}}</td>
           </tr>
+           <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Total</th>
+            <td colspan="6" class="text-center" style="padding: 40px;">{{stage.total}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;"></td>
+          </tr>
         </tbody>
       </table>
-      <h1>Update Status</h1>
+      <h1 class="text-primary p-4">Update Status</h1>
       <div class="container border rounded w-50 border-dark p-4">
         <form action="/update_status/{{stage.grp_id}}" method="post">
           <div class="form-group">

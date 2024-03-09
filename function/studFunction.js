@@ -123,8 +123,8 @@ function add_file(req, res) {
     const grp_id = req.params.id;
     const lvl = req.params.lvl;
     console.log("Group is", grp_id);
-    let uploaded;
 
+    let uploaded;
     console.log("Level is", lvl);
 
     let task;
@@ -151,9 +151,21 @@ function add_file(req, res) {
     db.query(marksQuery, [grp_id], (err, result) => {
         if (err) {
             console.log(err);
-            uploaded = "Error fetching uploads";
+
         } else {
-            uploaded = result[0] ? result[0][lvl] : "NO Uploads !";
+           if(lvl == 1){
+            uploaded = result[0].status1;
+           }else if(lvl == 2){
+            uploaded = result[0].status2;
+
+           }else if(lvl ==3){
+            uploaded = result[0].status3;
+
+           }else{
+            uploaded = result[0].status4;
+
+           }
+            
         }
 
         // Fetch comment from comment table
@@ -240,11 +252,11 @@ function upload(req, res) {
     const lvl = req.params.lvl;
     const file = req.file;
     const filename = req.file.originalname;
-    const data =req.file.buffer.toString('base64');
+    const data = req.file.buffer.toString('base64');
 
     // Check if file exists
     if (!file) {
-      return res.status(400).send('No file uploaded.');
+        return res.status(400).send('No file uploaded.');
     }
 
     console.log("Group is", grp_id);
@@ -252,43 +264,43 @@ function upload(req, res) {
     console.log("Data is", file);
     console.log("Data is", filename);
 
-   
+
 
     // Fetch teacher_id from the group
     db.query("SELECT `teacher_id` FROM `group` WHERE `group_id` = ?;", [grp_id], (err, result) => {
-      if (err) {
-        console.error("Error fetching teacher_id:", err);
-        return res.status(500).send('Internal Server Error');
-      }
-
-      const teach_id = result[0].teacher_id;
-
-      // Insert a comment
-      db.query("INSERT INTO `comment` (`group_id`, `t_id`, `description`, `level`) VALUES (?, ?, NULL, ?);", [grp_id, teach_id, lvl], (err) => {
         if (err) {
-          console.error("Error inserting comment:", err);
-          return res.status(500).send('Internal Server Error');
+            console.error("Error fetching teacher_id:", err);
+            return res.status(500).send('Internal Server Error');
         }
 
-        // Update marks based on the file level
-        const fileno = 'file' + lvl;
-        const filecont = 'filecont' + lvl;
-        console.log(fileno, filecont);
+        const teach_id = result[0].teacher_id;
 
-        const updateQuery = `UPDATE marks SET ${fileno} = ?, ${filecont} = ? WHERE group_id = ?;`;
+        // Insert a comment
+        db.query("INSERT INTO `comment` (`group_id`, `t_id`, `description`, `level`) VALUES (?, ?, NULL, ?);", [grp_id, teach_id, lvl], (err) => {
+            if (err) {
+                console.error("Error inserting comment:", err);
+                return res.status(500).send('Internal Server Error');
+            }
 
-        db.query(updateQuery, [filename, data, grp_id], (err) => {
-          if (err) {
-            console.error(`Error updating marks for ${lvl}:`, err);
-            return res.status(500).send('Internal Server Error');
-          }
+            // Update marks based on the file level
+            const fileno = 'file' + lvl;
+            const filecont = 'filecont' + lvl;
+            console.log(fileno, filecont);
 
-          req.flash('message', 'Saved Successfully');
-          res.redirect('/student');
+            const updateQuery = `UPDATE marks SET ${fileno} = ?, ${filecont} = ? WHERE group_id = ?;`;
+
+            db.query(updateQuery, [filename, data, grp_id], (err) => {
+                if (err) {
+                    console.error(`Error updating marks for ${lvl}:`, err);
+                    return res.status(500).send('Internal Server Error');
+                }
+
+                req.flash('message', 'Saved Successfully');
+                res.redirect('/student');
+            });
         });
-      });
     });
-  }
+}
 
 
 

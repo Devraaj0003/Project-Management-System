@@ -13,8 +13,8 @@
     {{/if}}
 
     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h2 class="text-center mb-4 text-primary">Edit Teacher {{message}}</h2>
+        <div class="col-md-6 offset-md-3 border border-primary rounded bg-light">
+            <h2 class="text-center mb-4 text-primary mt-3">Edit Teacher {{message}}</h2>
 
             {{#each rows}}
             <form action="/update_teacher/{{this.t_id}}" method="POST">
@@ -39,7 +39,7 @@
                         placeholder="Enter your phone" />
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <center> <button type="submit" class="btn btn-primary">Submit</button></center>
             </form>
             {{/each}}
         </div>

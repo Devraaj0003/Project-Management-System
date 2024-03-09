@@ -148,7 +148,8 @@ function view_studproject(req, res) {
                 level2: marks[0].level2,
                 level3: marks[0].level3,
                 level4: marks[0].level4,
-                t_id: marks[0].t_id
+                t_id: marks[0].t_id,
+                total:marks[0].total
 
             };
         } else {
@@ -169,15 +170,12 @@ function view_studproject(req, res) {
                     } else if (element.level == 2) {
                         data2 = element.description;
                         console.log("this is", element.description);
-
                     } else if (element.level == 3) {
                         data3 = element.description;
                         console.log("this is", element.description);
-
                     } else if (element.level == 4) {
                         data4 = element.description;
                         console.log("this is", element.description);
-
                     }
                 });
                 console.log("thisiddd", data1, data2, data3, data4);
@@ -393,27 +391,6 @@ function update_status(req, res) {
     const updateCommentQuery = "UPDATE comment SET description = ? WHERE group_id = ? AND level= ?";
     const gettotal = "SELECT * FROM `marks` WHERE group_id = ? ";
 
-    db.query(gettotal, [gid], (err, getmarks) => {
-        if (err) {
-            console.log(err);
-        }
-        // Check if getmarks array is not empty
-        if (getmarks.length > 0) {
-            console.log("this orange:", getmarks);
-
-            const m1 = parseInt(getmarks[0].level1) || 0;
-            const m2 = parseInt(getmarks[0].level2) || 0;
-            const m3 = parseInt(getmarks[0].level3) || 0;
-            const m4 = parseInt(getmarks[0].level4) || 0;
-
-            const totalmarks = m1 + m2 + m3 + m4;
-            console.log("marks are m1:" + m1 + "    m2:" + m2 + "     m3:" + m3 + "    m4:" + m4);
-
-            console.log("total marks:", totalmarks);
-            db.query("UPDATE marks SET total = ? WHERE group_id=?", [totalmarks, gid]);
-        }
-
-    });
     let level;
 
     switch (phase) {
@@ -454,19 +431,17 @@ function update_status(req, res) {
                 const m4 = parseInt(getmarks[0].level4) || 0;
 
                 const totalmarks = m1 + m2 + m3 + m4;
+                console.log("m1: ",m1,"m2:  ",m2,"m3: ",m3,"m4: ",m4,"total: ",totalmarks);
                 const stat1 = getmarks[0].status1;
                 const stat2 = getmarks[0].status2;
                 const stat3 = getmarks[0].status3;
                 const stat4 = getmarks[0].status4;
                  if(stat1,stat2,stat3,stat4 == "Approved"){
                     const last_stat = "Completed";
-
+                    
                     db.query("UPDATE projects SET status = ? WHERE group_id=?",[last_stat,gid]);
                  }
 
-
-
-        
                 db.query("UPDATE marks SET total = ? WHERE group_id=?", [totalmarks, gid]);
             }
 

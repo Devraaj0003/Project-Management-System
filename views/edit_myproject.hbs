@@ -10,12 +10,12 @@
     {{/if}}
 
     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h2 class="text-center mb-4 text-primary">Set My Project</h2>
+        <div class="col-md-6 offset-md-3  border border-primary rounded bg-light">
+            <h2 class="text-center mb-4 text-primary my-3">Set My Project</h2>
             {{#each rows}}
             <form action="/update_myproject/{{this.group_id}}" method="POST">
                 <div class="form-group">
-                    <label for="name">Project Name</label>{{this.p_id}},{{this.group_id}}
+                    <label for="name">Project Name</label>
                     <input type="text" class="form-control" id="name" name="project_name"
                         placeholder="Enter your project name" />
                 </div>
@@ -23,7 +23,7 @@
                     <label for="exampleFormControlTextarea1" class="form-label">Project Description</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <center><button type="submit" class="btn btn-primary">Submit</button></center>
             </form>
             {{/each}}
         </div>
