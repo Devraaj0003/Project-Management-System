@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar min-vh-100 ">
+      <div class="position-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="/teacher">
+              DashBoard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/view_mygroups/{{stage.t_id}}">
+              View Groups
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link 3
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link 4
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link 5
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Link 6
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color: DDE6ED;">
+      <h1 class="text-primary p-4">MY Project {{stage.name}}</h1>
+
+      <!-- Your page content goes here -->
+      <table class="table table-bordered table-horizontal">
+
+        <tbody>
+          <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Phase</th>
+            <th colspan="2" class="text-center" style="padding: 40px;">Upload</th>
+            <th colspan="2" class="text-center" style="padding: 40px;">Status</th>
+            <th colspan="2" class="text-center" style="padding: 40px;">Marks</th>
+            <th colspan="2" class="text-center" style="padding: 40px;">Comments</th>
+
+          </tr>
+          <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Study Phase</th>
+            <td colspan="2" class="text-center" style="padding: 40px;"><a
+                href="/view_file/{{pid}}&1">{{stage.stage1}}</a></td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status1}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.level1}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac1}}</td>
+          </tr>
+          <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Design Phase</th>
+            <td colspan="2" class="text-center" style="padding: 40px;"><a
+                href="/view_file/{{pid}}&2">{{stage.stage2}}</a></td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status2}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.level2}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac2}}</td>
+
+          </tr>
+          <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Development Phase</th>
+            <td colspan="2" class="text-center" style="padding: 40px;"><a
+                href="/view_file/{{pid}}&3">{{stage.stage3}}</a></td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status3}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.level3}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac3}}</td>
+          </tr>
+          <tr>
+            <th colspan="2" class="text-center" style="padding: 40px;">Test Phase</th>
+            <td colspan="2" class="text-center" style="padding: 40px;"><a
+                href="/view_file/{{pid}}&4">{{stage.stage4}}</a></td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status4}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.level4}}</td>
+            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac4}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Update Status</h1>
+      <div class="container border rounded w-50 border-dark p-4">
+        <form action="/update_status/{{stage.grp_id}}" method="post">
+          <div class="form-group">
+           
+            <select class="form-control" id="exampleFormControlSelect1" value="phase" name="phase">
+              <option>Study Phase</option>
+              <option>Design Phase</option>
+              <option>Development Phase</option>
+              <option>Test Phase</option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="Approved" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Approved
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="Not Approved">
+            <label class="form-check-label" for="exampleRadios2">
+              Not Approved
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="marks">Enter Marks</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="enter marks" name="mark">
+          </div>
+          <div class="form-group">
+            <label for="marks">Enter Comments</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Comment here..."
+              name="comment">
+          </div>
+          <center><button type="submit" class="btn btn-primary">Submit</button></center>
+
+        </form>
+      </div>
+
+
+      </form>
+    </main>
+  </div>
+</div>

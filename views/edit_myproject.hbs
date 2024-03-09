@@ -1,0 +1,31 @@
+<div class="container mt-5">
+
+    {{#if message.length}}
+    <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4 text-primary">Set My Project</h2>
+            {{#each rows}}
+            <form action="/update_myproject/{{this.group_id}}" method="POST">
+                <div class="form-group">
+                    <label for="name">Project Name</label>{{this.p_id}},{{this.group_id}}
+                    <input type="text" class="form-control" id="name" name="project_name"
+                        placeholder="Enter your project name" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1" class="form-label">Project Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {{/each}}
+        </div>
+    </div>
+</div>

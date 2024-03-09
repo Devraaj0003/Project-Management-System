@@ -1,0 +1,11 @@
+<div class="container">
+    <a href="/view_studproject/{{pid}}">Go Back</a>
+
+    <h1 class="text-primary">File Content</h1>
+
+    {{#if isImage}}
+        <img src="data:image/png;base64,{{fileContent}}" alt="embedded" width="100%" height="100%">
+    {{else}}
+        <iframe src="data:application/pdf;base64,{{fileContent}}" width="100%" height="600"></iframe>
+    {{/if}}
+</div>

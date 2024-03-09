@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar min-vh-100 bg-light " style="background-color: e1e5f2;">
+      <div class="position-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/r_teacher" >
+              New register Teacher
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/r_student" >
+              New register Student
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/new_project" >
+              New Project
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="loadProject" href="/admin/view_teacher" >
+              Manage Teacher
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_student" >
+              Manage Student
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_project" >
+              Manage Project
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_group" >
+              Manage Group
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_mark" >
+              Manage Mark
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto  col-lg-10 px-md-4" style="background-color: DDE6ED;">
+
+
+   
+      
+      <div class="heading d-flex justify-content-between align-items-center">
+        <div class=" h1 text-primary p-4">My Project</div>
+        <div>
+          <form class="form-inline my-2 my-lg-0" action="/admin/view_project" method="get">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search Project" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+      
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Group Id</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Project Detail</th>
+            <th scope="col">Student Id</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Teacher Id</th>
+            <th scope="col">Teacher Name</th>
+            <th scope="col">Year</th>
+            <th scope="col">Type</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each result}}
+          <tr>
+            <td>{{this.p_id}}</td>
+            <td>{{this.group_id}}</td>
+            <td>{{this.project_name}}</td>
+            <td>{{this.project_detail}}</td>
+            <td>{{this.s_id}}</td>
+            <td>{{this.student_name}}</td>
+            <td>{{this.teacher_id}}</td>
+            <td>{{this.teacher_name}}</td>
+            <td>{{this.year}}</td>
+            <td>{{this.type}}</td>
+            <td>{{this.start_date}}</td>
+            <td>{{this.end_date}}</td>
+            <td>{{this.status}}</td>
+            <td>
+              {{!-- <a href="/edit_student/{{this.p_id}}" type="button" class="btn btn-light btn-small"><i
+                  class="bi bi-pencil-fill"></i>Edit</a> --}}
+              <a href="/delete_project/{{this.p_id}}" type="button" class="btn btn-danger btn-small"><i
+                  class="bi bi-trash3-fill"></i>Delete</a>
+
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </main>
+  </div>
+</div>
+
+
+

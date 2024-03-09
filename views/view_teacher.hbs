@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar min-vh-100 ">
+      <div class="position-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="/admin/r_teacher">
+              New register Teacher
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/r_student">
+              New register Student
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/new_project">
+              New Project
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="loadProject" href="/admin/view_teacher">
+              Manage Teacher
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_student">
+              Manage Student
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_project">
+              Manage Project
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_group">
+              Manage Group
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/view_mark">
+              Manage Mark
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="background-color: DDE6ED;">
+
+      <div class="heading d-flex justify-content-between align-items-center">
+        <div class=" h1 text-primary p-4">Manage Teacher</div>
+        <div>
+          <form class="form-inline my-2 my-lg-0" action="/admin/view_teacher" method="get">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search Name" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each result}}
+          <tr>
+            <td>{{this.t_id}}</td>
+            <td>{{this.t_name}}</td>
+            <td>{{this.t_email}}</td>
+            <td>{{this.t_phone}}</td>
+            <td>
+              <a href="/edit_teacher/{{this.t_id}}" type="button" class="btn btn-light btn-small"><i
+                  class="bi bi-pencil-fill"></i>Edit</a>
+              <a href="/delete_teacher/{{this.t_id}}" type="button" class="btn btn-danger btn-small"><i
+                  class="bi bi-trash3-fill"></i>Delete</a>
+
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+  </div>
+  </main>
+</div>
+</div>

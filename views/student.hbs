@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar min-vh-100">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            My Project
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&1">
+                            Study Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&2">
+                            Design Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&3">
+                            Development Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&4">
+                            Test Phase
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h1 class="mt-2 text-primary">My Project{{userName}} {{s_id}} {{grp_id}}</h1>
+            <!-- Your page content goes here -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Group Id</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Project Detail</th>
+                            <th scope="col">Student Id</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Teacher Name</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each result2}}
+                        <tr>
+                            <td>{{this.p_id}}</td>
+                            <td>{{this.group_id}}</td>
+                            <td>{{this.project_name}}</td>
+                            <td>{{this.project_detail}}</td>
+                            <td>{{this.s_id}}</td>
+                            <td>{{this.student_name}}</td>
+                            <td>{{this.teacher_name}}</td>
+                            <td>{{this.year}}</td>
+                            <td>{{this.type}}</td>
+                            <td>{{this.start_date}}</td>
+                            <td>{{this.end_date}}</td>
+                            <td>{{this.status}}</td>
+                            <td>
+                                <a href="/edit_myproject/{{this.p_id}}" type="button" class="btn btn-light btn-sm"><i
+                                        class="bi bi-pencil-fill"></i>Edit</a>
+                                {{!-- <a href="/delete_project/{{this.p_id}}" type="button"
+                                    class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i>Delete</a>
+                                --}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="container">
+                <h2>Project Stages</h2>
+
+                <table class="table table-bordered table-horizontal">
+                    
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="text-center" style="padding: 40px;">Study Phase</th>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage1}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-center" style="padding: 40px;">Design Phase</th>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage2}}</td>
+
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-center" style="padding: 40px;">Development Phase</th>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage3}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-center" style="padding: 40px;">Test Phase</th>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage4}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </main>
+    </div>
+</div>

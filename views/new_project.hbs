@@ -1,0 +1,59 @@
+<div class="container mt-5">
+
+    {{#if message.length}}
+
+    <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4 text-primary">New Project Registration</h2>
+            <form action="/reg_project" method="POST">
+
+                <div class="form-radio">
+                    <input type="radio" name="project_type" value="Mini" id="Mini" checked="checked" />
+                    <label for="Mini">Mini</label>
+
+                    <input type="radio" name="project_type" value="Main" id="Main" />
+                    <label for="Main">Main</label>
+                </div>
+                <div class="form-group">
+                    <label for="date">Year Of Project</label>
+                    <input type="phone" class="form-control" id="year" name="project_year" placeholder="Enter year" />
+                </div>
+                <div class="form-group">
+                    <label for="strt_date">Start Date</label>
+                    <input type="date" class="form-control" id="year" name="strt_date" placeholder="Enter start date" />
+                </div>
+                <div class="form-group">
+                    <label for="strt_date">End Date</label>
+                    <input type="date" class="form-control" id="year" name="end_date" placeholder="Enter end date" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+
+        </div>
+
+
+
+    </div>
+    <script>
+        // Self-closing alert box after 2000 milliseconds (2 seconds)
+        setTimeout(function () {
+            $('#myAlert').alert('close');
+        }, 2000);
+
+        // Ensure Bootstrap components are properly initialized
+        $(document).ready(function () {
+            $('.alert').alert();
+        });
+    </script>
+</div>

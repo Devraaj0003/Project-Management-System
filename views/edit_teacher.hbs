@@ -1,0 +1,47 @@
+<h1>EDIT PAGEs</h1>
+<div class="container mt-5">
+
+
+
+    {{#if message.length}}
+    <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4 text-primary">Edit Teacher {{message}}</h2>
+
+            {{#each rows}}
+            <form action="/update_teacher/{{this.t_id}}" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{this.t_name}}"
+                        placeholder="Enter your name" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" value="{{this.t_email}}" name="email"
+                        placeholder="Enter your email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" value="{{this.t_password}}" name="password"
+                        placeholder="Enter your password" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" value="{{this.t_phone}}" name="phone"
+                        placeholder="Enter your phone" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {{/each}}
+        </div>
+    </div>
+</div>
