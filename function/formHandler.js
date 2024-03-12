@@ -12,7 +12,7 @@ function login(req, res) {
   const a_email = formData.email;
   const password = formData.password;
 
-  if (role === "Admin" && a_email === "a" && password === "a") {
+  if (role === "Admin" && a_email === "admin" && password === "admin") {
     req.session.user = {
       role: "admin",
       email: a_email,
@@ -77,10 +77,6 @@ function logout(req, res) {
       res.sendStatus(500);
     } 
     else {
-      // res.header(
-      //   "Cache-Control",
-      //   "no-store, private, no-cache, must-revalidate, max-stale=0, post-check=0, pre-check=0"
-      // );
       console.log("successfully logged out");
       res.redirect("/");
     }

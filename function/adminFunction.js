@@ -80,7 +80,7 @@ function view_student(req, res) {
     const search = req.query.search;
 
     const query = search
-        ? "SELECT * FROM student WHERE s_name = ?"
+        ? "SELECT * FROM student WHERE s_year = ?"
         : "SELECT * FROM student";
 
     const queryParams = search ? [search] : [];

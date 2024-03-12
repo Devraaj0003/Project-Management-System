@@ -1,4 +1,4 @@
-<div class="container mt-5" style="background: 383a3d">
+<div class="container-fluid" style="background: 383a3d">
 
     {{#if message.length}}
     <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,40 +10,75 @@
     {{/if}}
 
     <div class="row">
-        <div class="col-md-6 offset-md-3  border border-primary rounded bg-light">
-            <h2 class="text-center text-primary my-4">{{task}}</h2>
-            <form action="/upload/{{grp_id}}&{{lvl}}" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="name">Upload</label>
-                    <input type="file" class="form-control" id="name" name="upload" placeholder="Enter your name" />
-                    <small>jpg,png or pdf file only</small>
-                </div>
-                <center> <button type="submit" class="btn btn-primary">Submit</button></center>
-            </form>
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar min-vh-100">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
 
-            <div class="status d-flex flex-column align-items-stretch">
-                <div class="st d-flex justify-content-around">
-                    <div class="h5 text-primary">Status</div>
-                    {{#if uploaded}}
-                    <div class=" bg-warning rounded-pill px-4">{{uploaded}}</div>
-                    {{else}}
-                    <div class=" bg-warning rounded-pill px-4">pending</div>
-                    {{/if}}
-                </div>
-
-
-
-
-
-                <form action="/post_comment/{{grp_id}}&{{lvl}}" method="POST">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/student">
+                            My Project
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&1">
+                            Study Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&2">
+                            Design Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&3">
+                            Development Phase
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/stud/upload/{{grp_id}}&4">
+                            Test Phase
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="col-md-6 offset-md-3 my-5  border border-primary rounded bg-light">
+                <h2 class="text-center text-primary my-4">{{task}}</h2>
+                <form action="/upload/{{grp_id}}&{{lvl}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" value="{{descp}}"
-                            rows="3">{{grp_id}}:->{{descp}}</textarea>
+                        <label for="name">Upload</label>
+                        <input type="file" class="form-control" id="name" name="upload" placeholder="Enter your name" />
+                        <small>jpg,png or pdf file only</small>
                     </div>
                     <center> <button type="submit" class="btn btn-primary">Submit</button></center>
                 </form>
+
+                <div class="status d-flex flex-column align-items-stretch">
+                    <div class="st d-flex justify-content-around">
+                        <div class="h5 text-primary">Status</div>
+                        {{#if uploaded}}
+                        <div class=" bg-warning rounded-pill px-4">{{uploaded}}</div>
+                        {{else}}
+                        <div class=" bg-warning rounded-pill px-4">pending</div>
+                        {{/if}}
+                    </div>
+
+
+
+
+
+                    <form action="/post_comment/{{grp_id}}&{{lvl}}" method="POST">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="form-label">Comments</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="comment"
+                                value="{{descp}}" rows="3"></textarea>
+                        </div>
+                        <center> <button type="submit" class="btn btn-primary">Submit</button></center>
+                    </form>
+                </div>
             </div>
-        </div>
+        </main>
+
     </div>
 </div>

@@ -16,7 +16,6 @@ const fs = require('fs');
 
 //Routes
 var formRouter = require("./routes/login_form");
-var indexRouter = require("./routes/index");
 var studentRouter = require("./routes/users/student");
 var adminRouter = require("./routes/users/admin");
 var teacherRouter = require("./routes/users/teacher");

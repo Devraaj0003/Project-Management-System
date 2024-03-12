@@ -54,7 +54,7 @@
         <div class=" h1 text-primary p-4">Manage Student</div>
         <div>
           <form class="form-inline my-2 my-lg-0" action="/admin/view_student" method="get">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search Name" aria-label="Search" name="search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search year wise" aria-label="Search" name="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -69,6 +69,7 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
+            <th scope="col">Year</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -81,6 +82,8 @@
             <td>{{this.s_name}}</td>
             <td>{{this.s_email}}</td>
             <td>{{this.s_phone}}</td>
+            <td>{{this.s_year}}</td>
+
             <td>
               <a href="/edit_student/{{this.s_id}}" type="button" class="btn btn-light btn-small"><i
                   class="bi bi-pencil-fill"></i>Edit</a>

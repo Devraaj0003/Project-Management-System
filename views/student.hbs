@@ -5,6 +5,9 @@
             <div class="position-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
+                        <div class=" text-secondary">Welcome {{userName}} 👋</div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="#">
                             My Project
                         </a>
@@ -35,7 +38,7 @@
 
         <!-- Main Content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <h1 class="mt-2 text-primary">My Project{{userName}} {{s_id}} {{grp_id}}</h1>
+            <h1 class="mt-2 text-primary">My Project</h1>
             <!-- Your page content goes here -->
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
@@ -87,24 +90,32 @@
                 <h2 class="text-primary m-3">Project Stages</h2>
 
                 <table class="table table-bordered table-horizontal">
-                    
+
                     <tbody>
                         <tr>
                             <th colspan="2" class="text-center" style="padding: 40px;">Study Phase</th>
                             <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage1}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status1}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac1}}</td>
                         </tr>
                         <tr>
                             <th colspan="2" class="text-center" style="padding: 40px;">Design Phase</th>
                             <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage2}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status2}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac2}}</td>
 
                         </tr>
                         <tr>
                             <th colspan="2" class="text-center" style="padding: 40px;">Development Phase</th>
                             <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage3}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status3}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac3}}</td>
                         </tr>
                         <tr>
                             <th colspan="2" class="text-center" style="padding: 40px;">Test Phase</th>
                             <td colspan="2" class="text-center" style="padding: 40px;">{{stage.stage4}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{stage.status4}}</td>
+                            <td colspan="2" class="text-center" style="padding: 40px;">{{dt.datac4}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -40,85 +40,8 @@ function update_myproject(req, res) {
 }
 
 
-// function add_file(req, res) {
-//     const grp_id = req.params.id;
-//     const lvl = req.params.lvl;
-//     console.log("Group is", grp_id);
-//     let uploaded;
-
-//     console.log("Level is", lvl);
-
-//     if (lvl == 'file1') {
-//         var task = 'Study Phase';
-//         db.query("SELECT * FROM `marks` WHERE group_id = ?;", [grp_id], (err, result) => {
-//             if (result[0]) {
-//                 uploaded = result[0].file1;
-//             } else {
-//                 uploaded = "NO Uploads !";
-//             }
-//             if (err) {
-//                 console.log(err);
-//             }
-//         });
-//     } else if (lvl == 'file2') {
-//         var task = 'Design Phase';
-//         db.query("SELECT * FROM `marks` WHERE group_id = ?;", [grp_id], (err, result) => {
-//             if (result[0]) {
-//                 uploaded = result[0].file2;
-//             } else {
-//                 uploaded = "NO Uploads !";
-//             }
-//             if (err) {
-//                 console.log(err);
-//             }
-//         });
-//     } else if (lvl == 'file3') {
-//         var task = 'Development Phase';
-//         db.query("SELECT * FROM `marks` WHERE group_id = ?;", [grp_id], (err, result) => {
-//             if (result[0]) {
-//                 uploaded = result[0].file3;
-//             } else {
-//                 uploaded = "NO Uploads !";
-//             }
-//             if (err) {
-//                 console.log(err);
-//             }
-//         });
-//     } else {
-//         var task = 'Test Phase';
-//         db.query("SELECT * FROM `marks` WHERE group_id = ?;", [grp_id], (err, result) => {
-//             if (result[0]) {
-//                 uploaded = result[0].file4;
-//             } else {
-//                 uploaded = "NO Uploads !";
-//             }
-//             if (err) {
-//                 console.log(err);
-//             }
-//         });
-//     }
 
 
-
-
-//     db.query("SELECT * FROM `comment` WHERE group_id = ? AND level =?", [grp_id, lvl], (err, result) => {
-//         if (result[0]) {
-//             const descp = result[0].description; // Assuming you want the first row's description
-
-//             res.render("upload", { userRole: req.session.user.role, descp, lvl, grp_id, task, uploaded });
-//         }
-//         else {
-//             res.render("upload", { userRole: req.session.user.role, lvl, grp_id, task, uploaded });
-//         }
-//         if (err) {
-//             console.log(err);
-//         }
-//     })
-
-
-
-
-// }
 function add_file(req, res) {
     const grp_id = req.params.id;
     const lvl = req.params.lvl;
@@ -186,67 +109,6 @@ function add_file(req, res) {
 
 
 
-
-
-
-
-// function upload(req, res) {
-//     const grp_id = req.params.id;
-//     const lvl = req.params.lvl;
-//     const file = req.file;
-
-//     // Check if file exists
-//     if (!file) {
-//         return res.status(400).send('No file uploaded.');
-//     }
-
-//     console.log("Group is", grp_id);
-//     console.log("Level is", lvl);
-//     console.log("Data is", file);
-
-//     // Compress the file buffer using zlib
-//     zlib.deflate(file.buffer, (err, compressedBuffer) => {
-//         if (err) {
-//             console.error('Error compressing file buffer:', err);
-//             return res.status(500).send('Internal Server Error');
-//         }
-
-//         // Fetch teacher_id from the group
-//         db.query("SELECT `teacher_id` FROM `group` WHERE `group_id` = ?;", [grp_id], (err, result) => {
-//             if (err) {
-//                 console.error("Error fetching teacher_id:", err);
-//                 return res.status(500).send('Internal Server Error');
-//             }
-
-//             const teach_id = result[0].teacher_id;
-
-//             // Insert a comment
-//             db.query("INSERT INTO `comment` (`group_id`, `t_id`, `description`, `level`) VALUES (?, ?, NULL, ?);", [grp_id, teach_id, lvl], (err) => {
-//                 if (err) {
-//                     console.error("Error inserting comment:", err);
-//                     return res.status(500).send('Internal Server Error');
-//                 }
-
-//                 // Update marks based on the file level
-//                 const updateQuery = `UPDATE \`marks\` SET ${lvl} = ?, filecont${lvl.slice(4)} = ? WHERE \`group_id\` = ?;`;
-
-//                 db.query(updateQuery, [file.originalname, compressedBuffer, grp_id], (err) => {
-//                     if (err) {
-//                         console.error(`Error updating marks for ${lvl}:`, err);
-//                         return res.status(500).send('Internal Server Error');
-//                     }
-
-//                     req.flash('message', 'Saved Successfully');
-//                     res.redirect('/student');
-//                 });
-//             });
-//         });
-//     });
-// }
-
-
-// Set up multer for file uploads
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function upload(req, res) {
     const grp_id = req.params.id;
     const lvl = req.params.lvl;
@@ -305,7 +167,6 @@ function upload(req, res) {
 
 
 
-
 function post_comment(req, res) {
     const grp_id = req.params.id;
     const lvl = req.params.lvl;
@@ -331,81 +192,6 @@ function post_comment(req, res) {
         });
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function upload(req, res) {
-//     let sampleFile;
-//     let uploadFile;
-
-//     const grp_id = req.params.id;
-//     const lvl = req.params.lvl;
-//     const file = req.file;
-
-//     // // Check if file exists
-//     // if (!file) {
-//     //     return res.status(400).send('No file uploaded.');
-//     // }
-
-//     sampleFile = req.body.file.upload;
-//     uploadFile = __dirname + '../public/images/' + sampleFile.name;
-
-//     console.log(sampleFile);
-//     sampleFile.mv(uploadPath, function (err) {
-//         if (err) returnres.status(500).send(err);
-//     });
-
-
-
-//     // Fetch teacher_id from the group
-//     db.query("SELECT `teacher_id` FROM `group` WHERE `group_id` = ?;", [grp_id], (err, result) => {
-//         if (err) {
-//             console.error("Error fetching teacher_id:", err);
-//             return res.status(500).send('Internal Server Error');
-//         }
-
-//         const teach_id = result[0].teacher_id;
-
-//         // Insert a comment
-//         db.query("INSERT INTO `comment` (`group_id`, `t_id`, `description`, `level`) VALUES (?, ?, NULL, ?);", [grp_id, teach_id, lvl], (err) => {
-//             if (err) {
-//                 console.error("Error inserting comment:", err);
-//                 return res.status(500).send('Internal Server Error');
-//             }
-
-//             // Update marks based on the file level
-//             const fileno = 'file' + lvl;
-//             const filecont = 'filecont' + lvl;
-//             console.log(fileno, filecont);
-
-//             const updateQuery = `UPDATE marks SET ${fileno} = ?, ${filecont} = ? WHERE group_id = ?;`;
-
-//             db.query(updateQuery, [sampleFile.name, fileno, grp_id], (err) => {
-//                 if (err) {
-//                     console.error(`Error updating marks for ${lvl}:`, err);
-//                     return res.status(500).send('Internal Server Error');
-//                 }
-
-//                 req.flash('message', 'Saved Successfully');
-//                 res.redirect('/student');
-//             });
-//         });
-//     });
-// }
-
-
 
 
 module.exports = {
